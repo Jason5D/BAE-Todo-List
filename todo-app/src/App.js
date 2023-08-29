@@ -16,6 +16,10 @@ function App() {
     setText("");
   }
 
+  function handleDeleteAll() {
+    setList([]);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -26,6 +30,7 @@ function App() {
           text={text}
           onTextChange={handleTextChange}
           onAdd={handleChange}
+          handleDeleteAll={handleDeleteAll}
         />
         <List list={list} />
       </main>

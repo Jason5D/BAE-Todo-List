@@ -1,6 +1,7 @@
 import React from "react";
+import Delete from "./Delete.js";
 
-export default function Input({ text, onTextChange, onAdd }) {
+export default function Input({ text, onTextChange, onAdd, handleDeleteAll }) {
   return (
     <div>
       <label for="newtask">New task: </label>
@@ -14,6 +15,7 @@ export default function Input({ text, onTextChange, onAdd }) {
       <button type="button" onClick={onAdd}>
         Add task
       </button>
+      <Delete handleDeleteAll={handleDeleteAll}/>
     </div>
   );
 }
