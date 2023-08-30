@@ -20,6 +20,10 @@ function App() {
     setList([]);
   }
 
+  function handleDeleteItem(newList) {
+    setList(newList);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -32,7 +36,7 @@ function App() {
           onAdd={handleChange}
           handleDeleteAll={handleDeleteAll}
         />
-        <List list={list} />
+        <List list={list} onDelete={handleDeleteItem}/>
       </main>
       <footer>
         <Credits />
