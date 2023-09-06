@@ -8,13 +8,22 @@ export default function List(props) {
     props.onDelete(newList);
   }
 
+  function handleToggleFavorite(index) {
+    props.onToggleFavorite(index);
+  }
+
+
+
   return (
     <ul style={{ listStyle: "none" }}>
       {props.list.map((item, index) => (
         <li key={index}>
           <input type="checkbox" />
-          {item}
+          <span className={item.favorite ? "favorite" : ""}>{item.text}</span>
           <button onClick={() => handleDelete(index)}>Delete</button>
+          <button onClick={() => handleToggleFavorite(index)}>
+            {item.favorite ? "Unfavorite" : "Favorite"}
+          </button>
         </li>
       ))}
     </ul>

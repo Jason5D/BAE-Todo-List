@@ -3,19 +3,21 @@ import Credits from "./Credits.js";
 import Input from "./Input.js";
 import List from "./List.js";
 
-
 function App() {
   const [text, setText] = useState("");
   const [list, setList] = useState([]);
+ 
 
-// this reads the text put in the text box so that it can be added into the list
+
+  // this reads the text put in the text box so that it can be added into the list
   function handleTextChange(event) {
     setText(event.target.value);
   }
 
   // adds what is in the text box to the list array
   function handleChange() {
-    setList([...list, text]);
+    const newTask = { text, favorite: false }; // Add a "favorite" property
+    setList([...list, newTask]);
     setText("");
   }
 
@@ -29,6 +31,12 @@ function App() {
     setList(newList);
   }
 
+  // marks as favourite
+  function toggleFavorite(index) {
+    const newList = [...list];
+    newList[index].favorite = !newList[index].favorite;
+    setList(newList);
+  }
 
   return (
     <div className="App">
@@ -42,7 +50,12 @@ function App() {
           onAdd={handleChange}
           handleDeleteAll={handleDeleteAll}
         />
-        <List list={list} onDelete={handleDeleteItem}/>
+       
+        <List
+          list={list}
+          onDelete={handleDeleteItem}
+          onToggleFavorite={toggleFavorite}
+        />
       </main>
       <footer>
         <Credits />
