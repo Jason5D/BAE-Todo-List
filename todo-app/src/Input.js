@@ -1,9 +1,23 @@
-export default function Input() {
+import React from "react";
+import Delete from "./Delete.js";
+
+export default function Input({ text, onTextChange, onAdd, handleDeleteAll }) {
   return (
-    <div>
+    <div className="Input">
+      <div className="Inputs">
       <label for="newtask">New task: </label>
-      <input type="text" id="newtask" name="newtask" />
-      <button type="button">Add task</button>
+      <input
+        type="text"
+        id="newtask"
+        name="newtask"
+        value={text}
+        onChange={onTextChange}
+      />
+      <button type="button" onClick={onAdd}>
+        Add task
+      </button>
+      <Delete handleDeleteAll={handleDeleteAll}/>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,36 @@
+
+.App {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
+    justify-content: center;
+}
+
+.Header {
+    grid-column: 2;
+    grid-row: 1;
+    color: blue;
+    justify-self: center;
+    text-decoration: underline;
+}
+
+.Input {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.Inputs {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.List {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.Credits {
+    grid-column: 2;
+    grid-row: 5;
+    justify-self: center;
+}
