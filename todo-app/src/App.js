@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./App.css";
 import Credits from "./Credits.js";
 import Input from "./Input.js";
 import List from "./List.js";
@@ -32,10 +33,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Todo App</h1>
-      </header>
-      <main>
+        <h1 className="Header">Todo App</h1>
         <Input
           text={text}
           onTextChange={handleTextChange}
@@ -43,10 +41,7 @@ function App() {
           handleDeleteAll={handleDeleteAll}
         />
         <List list={list} onDelete={handleDeleteItem}/>
-      </main>
-      <footer>
         <Credits />
-      </footer>
     </div>
   );
 }

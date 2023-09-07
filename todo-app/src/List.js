@@ -9,7 +9,7 @@ export default function List(props) {
   }
 
   return (
-    <ul style={{ listStyle: "none" }}>
+    <ul className="List" style={{ listStyle: "none" }}>
       {props.list.map((item, index) => (
         <li key={index}>
           <input type="checkbox" />

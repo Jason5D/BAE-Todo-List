@@ -1,9 +1,9 @@
+import React from "react";
+
 export default function Credits() {
   return (
-    <div>
-      <footer>
+    <div className="Credits">
         <p>Created by Baewatch</p>
-      </footer>
     </div>
   );
 }
