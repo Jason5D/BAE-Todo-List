@@ -3,33 +3,19 @@ import Credits from "./Credits.js";
 import Input from "./Input.js";
 import List from "./List.js";
 
+
 function App() {
   const [text, setText] = useState("");
   const [list, setList] = useState([]);
-  const [favoriteLists, setFavoriteLists] = useState([]);
 
-  // Toggle favorite status and save the current list as a favorite
-  function toggleFavorite(index) {
-    const newList = [...list];
-    newList[index].favorite = !newList[index].favorite;
-    setList(newList);
-
-    if (newList[index].favorite) {
-      // Create a new list and add the current list as a favorite
-      const newFavoriteList = [...list];
-      setFavoriteLists([...favoriteLists, newFavoriteList]);
-    }
-  }
-
-  // this reads the text put in the text box so that it can be added into the list
+// this reads the text put in the text box so that it can be added into the list
   function handleTextChange(event) {
     setText(event.target.value);
   }
 
   // adds what is in the text box to the list array
   function handleChange() {
-    const newTask = { text, favorite: false }; // Add a "favorite" property
-    setList([...list, newTask]);
+    setList([...list, text]);
     setText("");
   }
 
@@ -44,7 +30,6 @@ function App() {
   }
 
 
-
   return (
     <div className="App">
       <header className="App-header">
@@ -57,22 +42,7 @@ function App() {
           onAdd={handleChange}
           handleDeleteAll={handleDeleteAll}
         />
-       
-        <List
-          list={list}
-          onDelete={handleDeleteItem}
-          onToggleFavorite={toggleFavorite}
-        />
-        {/* Render the favorite lists */}
-        <div>
-          <h2>Favorite Lists</h2>
-          {favoriteLists.map((favoriteList, index) => (
-            <div key={index}>
-              <p>Favorite List {index + 1}</p>
-              <List list={favoriteList} onDelete={() => {}} onToggleFavorite={() => {}} />
-            </div>
-          ))}
-        </div>
+        <List list={list} onDelete={handleDeleteItem}/>
       </main>
       <footer>
         <Credits />
