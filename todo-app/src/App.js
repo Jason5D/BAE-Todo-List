@@ -6,8 +6,20 @@ import List from "./List.js";
 function App() {
   const [text, setText] = useState("");
   const [list, setList] = useState([]);
- 
+  const [favoriteLists, setFavoriteLists] = useState([]);
 
+  // Toggle favorite status and save the current list as a favorite
+  function toggleFavorite(index) {
+    const newList = [...list];
+    newList[index].favorite = !newList[index].favorite;
+    setList(newList);
+
+    if (newList[index].favorite) {
+      // Create a new list and add the current list as a favorite
+      const newFavoriteList = [...list];
+      setFavoriteLists([...favoriteLists, newFavoriteList]);
+    }
+  }
 
   // this reads the text put in the text box so that it can be added into the list
   function handleTextChange(event) {
@@ -31,12 +43,7 @@ function App() {
     setList(newList);
   }
 
-  // marks as favourite
-  function toggleFavorite(index) {
-    const newList = [...list];
-    newList[index].favorite = !newList[index].favorite;
-    setList(newList);
-  }
+
 
   return (
     <div className="App">
@@ -56,6 +63,16 @@ function App() {
           onDelete={handleDeleteItem}
           onToggleFavorite={toggleFavorite}
         />
+        {/* Render the favorite lists */}
+        <div>
+          <h2>Favorite Lists</h2>
+          {favoriteLists.map((favoriteList, index) => (
+            <div key={index}>
+              <p>Favorite List {index + 1}</p>
+              <List list={favoriteList} onDelete={() => {}} onToggleFavorite={() => {}} />
+            </div>
+          ))}
+        </div>
       </main>
       <footer>
         <Credits />
